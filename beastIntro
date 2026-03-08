@@ -1,0 +1,41 @@
+<style>
+  #beastIntro {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 10;
+  }
+
+  #mainContent {
+    opacity: 0;
+    transition: opacity 2s ease-in;
+    z-index: 5;
+    position: relative;
+  }
+</style>
+
+<video id="beastIntro" autoplay muted playsinline>
+  <source src="your-video-file.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+<div id="mainContent">
+  <!-- Your landing page content goes here -->
+</div>
+
+<script>
+  const video = document.getElementById('beastIntro');
+  const mainContent = document.getElementById('mainContent');
+
+  video.addEventListener('ended', () => {
+    video.style.transition = 'opacity 1s ease-out';
+    video.style.opacity = 0;
+    setTimeout(() => {
+      video.style.display = 'none';
+      mainContent.style.opacity = 1;
+    }, 1000);
+  });
+</script>
